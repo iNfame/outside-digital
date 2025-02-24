@@ -9,7 +9,7 @@ generator client {
 
 model Event {
   id        Int      @id @default(autoincrement())
-  timestamp DateTime
+  timestamp DateTime @db.Timestamptz
   vehicleId String
   type      String
 

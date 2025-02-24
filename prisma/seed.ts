@@ -14,7 +14,7 @@ async function main() {
 
 		return {
 			id: parseInt(id, 10),
-			timestamp: new Date(timestamp),
+			timestamp: new Date(timestamp + 'Z'),
 			vehicleId,
 			type,
 		};

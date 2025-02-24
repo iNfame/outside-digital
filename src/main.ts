@@ -1,17 +1,16 @@
 import Fastify from 'fastify';
-import prismaPlugin from './plugins/prisma';
 import fastifyEnv from '@fastify/env';
 import fastifyCors from '@fastify/cors';
 import fastifySensible from '@fastify/sensible';
+import eventsRoutes from './routes/events';
+import prismaPlugin from './plugins/prisma';
 
-const fastify = Fastify({
-	logger: true
-});
+const fastify = Fastify({ logger: true });
 
 const port = Number(process.env.PORT) || 3000;
 
-// plugins - env
-fastify.register(fastifyEnv, {
+// plugins section
+fastify.register(fastifyEnv, {			// env
 	schema: {
 		type: 'object',
 		required: ['DATABASE_URL'],
@@ -21,24 +20,12 @@ fastify.register(fastifyEnv, {
 	},
 	dotenv: true
 });
-// plugins - cors
-fastify.register(fastifyCors);
-// plugins - utils
-fastify.register(fastifySensible);
-// plugins - prisma
-fastify.register(prismaPlugin);
+fastify.register(fastifyCors);			// cors
+fastify.register(fastifySensible);	// utils
+fastify.register(prismaPlugin);			// prisma
+fastify.register(eventsRoutes);			// routes
 
-fastify.get('/test', async (req, res) => {
-	try {
-		const events = await fastify.prisma.event.findMany();
-		res.send(events);
-	} catch (error) {
-		fastify.log.error(error);
-		res.internalServerError('db error');
-	}
-});
-
-// server launch
+// Запуск сервера
 const bootstrap = async (port: number) => {
 	try {
 		await fastify.listen({ port, host: '0.0.0.0' });
