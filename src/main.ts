@@ -4,6 +4,7 @@ import fastifyCors from '@fastify/cors';
 import fastifySensible from '@fastify/sensible';
 import eventsRoutes from './routes/events';
 import prismaPlugin from './plugins/prisma';
+import benchmarkRoutes from './routes/benchmark';
 
 const fastify = Fastify({ logger: true });
 
@@ -31,6 +32,7 @@ fastify.register(fastifyCors);			// cors
 fastify.register(fastifySensible);	// utils
 fastify.register(prismaPlugin);			// prisma
 fastify.register(eventsRoutes);			// routes
+fastify.register(benchmarkRoutes);	// benchmark since the dc is in EU
 
 // Запуск сервера
 const bootstrap = async (port: number) => {
