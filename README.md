@@ -1,3 +1,8 @@
+### Intro
+ 
+method: https://infame.aivus.app/events?startDate=2023-12-13T00:11:00Z&endDate=2023-12-21T00:15:00Z&vehicleId=sprint-4
+db net benchmark: https://infame.aivus.app/benchmark 
+
 dataset
 https://gist.github.com/infame/c7999e425e17b492284e137cda647ffd
 
