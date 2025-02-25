@@ -1,4 +1,6 @@
 ### Intro
+
+Tested on Node 22.14LTS
  
 method: https://infame.aivus.app/events?startDate=2023-12-13T00:11:00Z&endDate=2023-12-21T00:15:00Z&vehicleId=sprint-4
 db net benchmark: https://infame.aivus.app/benchmark 
