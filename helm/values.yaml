@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: ghcr.io/iNfame/outside-digital
+  repository: ghcr.io/infame/outside-digital
   pullPolicy: Always
   tag: latest
 

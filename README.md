@@ -1,5 +1,5 @@
 dataset
-https://gist.github.com/iNfame/c7999e425e17b492284e137cda647ffd
+https://gist.github.com/infame/c7999e425e17b492284e137cda647ffd
 
 ### setup
 1. git clone
