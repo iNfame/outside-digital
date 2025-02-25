@@ -1,0 +1,42 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/iNfame/outside-digital
+  pullPolicy: Always
+  tag: latest
+
+nameOverride: "outside-digital"
+fullnameOverride: "outside-digital"
+
+namespace:
+  create: false
+  name: app-main
+
+deployment:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 3001
+
+ingress:
+  enabled: true
+  className: nginx
+  clusterIssuer: letsencrypt-prod
+  annotations:
+    authEnabled: false
+    authSecret: ""
+    authRealm: "Authentication Required"
+  hosts:
+    - infame.aivus.app
+  paths:
+    - path: /
+      pathType: Prefix
+
+imagePullSecrets:
+  - name: github-container-registry
