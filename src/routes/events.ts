@@ -99,6 +99,14 @@ export default async function eventsRoutes(fastify: FastifyInstance) {
 						to: currentIso,
 						event: prevType
 					});
+				} else {
+					// same timestamp, different type => ephemeral
+					// we will still push a zero-length interval
+					result.push({
+						from: currentIso,
+						to: currentIso,
+						event: prevType
+					});
 				}
 				prevType = e.type as EventType;
 			}
