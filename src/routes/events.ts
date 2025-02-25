@@ -1,5 +1,4 @@
 import { FastifyInstance } from 'fastify';
-import prisma from '../plugins/prisma';
 import { eventRequestSchema, EventRecord } from '../types/dto';
 import { EventType } from '../types/enums';
 

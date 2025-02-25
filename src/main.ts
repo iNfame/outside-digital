@@ -9,6 +9,13 @@ const fastify = Fastify({ logger: true });
 
 const port = Number(process.env.PORT) || 3000;
 
+if (!process.env.DATABASE_URL) {
+	console.error("DATABASE_URL is not defined! Check your env vars or .env file.");
+	process.exit(1);
+} else {
+	console.log(process.env.DATABASE_URL);
+}
+
 // plugins section
 fastify.register(fastifyEnv, {			// env
 	schema: {
